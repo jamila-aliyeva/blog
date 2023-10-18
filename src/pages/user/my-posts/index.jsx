@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 // import request from "../../../server";
 
 import "./index.scss";
-import { Modal } from "antd";
 import PostCard from "../../../components/card/PostCard";
 import request from "../../../server";
+import { Modal } from "antd";
 
 function Myposts() {
   const [posts, setPosts] = useState([]);
@@ -20,7 +20,8 @@ function Myposts() {
     try {
       setLoading(true);
       const res = await request.get(`post/user?page=${page}&limit=10`);
-      setPosts(res.data.data);
+      console.log();
+      setPosts([res.data.data]);
       setTotalPage(res.data.pagination.total);
     } catch (error) {
       toast.error("Not Found");
@@ -81,26 +82,29 @@ function Myposts() {
     console.log(values);
   }
 
-  async function upLoadImage(e) {
-    try {
-      let form = new FormData();
-      form.append("file", e.target.files[0]);
-      let { data } = await request.post("upload", form);
-      setValues({ ...values, photo: data });
-      console.log(values);
-    } catch (err) {
-      toast.error("Server Error");
-    }
-  }
+  // async function upLoadImage(e) {
+  //   try {
+  //     let form = new FormData();
+  //     form.append("file", e.target.files[0]);
+  //     let { data } = await request.post("upload", form);
+  //     setValues({ ...values, photo: data });
+  //     console.log(values);
+  //   } catch (err) {
+  //     toast.error("Server Error");
+  //   }
+  // }
 
-  const deleteFunc = async (e, id) => {
-    e.preventDefault();
-    const del = window.confirm("Do you wantto delete this ?");
-    if (del) {
-      await request.delete("post/" + id);
-      getPosts(currentPage);
-    }
-  };
+  // const uploadButton = (
+  //   <div>
+  //     {loading ? <LoadingOutlined /> : <PlusOutlined />}
+  //     <div
+  //       style={{
+  //         marginTop: 8,
+  //       }}>
+  //       Upload
+  //     </div>
+  //   </div>
+  // );
 
   async function handleOk(e) {
     try {
@@ -174,7 +178,25 @@ function Myposts() {
               name="tags"
               placeholder="Post Tags"
             />
-            <input className="modal-input" onChange={upLoadImage} type="file" />
+            {/* <Upload
+              name="avatar"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+              onChange={upLoadImage}>
+              {imageUrl ? (
+                <img
+                  src={imageUrl}
+                  alt="avatar"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              ) : (
+                uploadButton
+              )}
+            </Upload> */}
           </form>
         </Modal>
         {/* modal */}
@@ -183,7 +205,7 @@ function Myposts() {
           <h3 className="err-loading">Loading...</h3>
         ) : posts.length ? (
           posts.map((post) => (
-            <div key={post._id} onContextMenu={(e) => deleteFunc(e, post._id)}>
+            <div key={post._id}>
               <PostCard post={post} />
             </div>
           ))
