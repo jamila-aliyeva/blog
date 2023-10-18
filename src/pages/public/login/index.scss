@@ -1,0 +1,46 @@
+.loginPage{
+    h2{
+        margin-top: 100px;
+        margin-bottom: 20px;
+        color: #232536;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 64px; 
+        letter-spacing: -2px;
+    }
+    input{
+        margin: 30px auto;
+        width: 100%;
+        padding: 20px;
+        color: var(--Black, #232536);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+    }
+    button{
+        padding: 16px;
+        margin-bottom: 400px;
+        color: var(--Black, #232536);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px; 
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        background: var(--Yellow, #FFD050);
+        transition: 0.5s;
+        &:hover{
+            box-shadow: 0 0 10px #645b43;
+        }
+    }
+}
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Open Sans', sans-serif;

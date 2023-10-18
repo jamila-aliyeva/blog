@@ -1,0 +1,44 @@
+.categories{
+    h2{
+        padding: 69px 0;
+        color: var(--Black, #232536);
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 48px; 
+        letter-spacing: -2px;
+    }
+    .category-wrappper{
+        margin-bottom: 100px;
+        gap: 40px !important;
+        img{
+            width: 100%;
+            height: 200px;
+        }
+        .category-card{
+            h4{
+                color: var(--Black, #232536);
+                font-size: 28px;
+                font-style: normal;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 700;
+                line-height: 40px; /* 142.857% */
+                letter-spacing: -1px;
+            }
+            p{
+                color: var(--Medium-grey, #6D6E76);
+                font-family: 'Inter', sans-serif;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 28px; 
+            }
+        }
+    }
+}
+
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Open Sans', sans-serif;

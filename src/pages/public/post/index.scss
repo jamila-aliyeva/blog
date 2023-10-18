@@ -1,0 +1,71 @@
+.post-card{
+    padding-top: 40px;
+    padding-bottom: 128px;
+    img{
+        width: 100%;
+    }
+    .user{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .user-fish{
+           h2{
+            color: var(--Purple, #592EA9);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: -1px;
+           }
+           h4{
+            color: var(--Medium-grey, #6D6E76);
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px; 
+           }
+        }
+    }
+    .popular-post{
+        h3{
+           margin-bottom: 34px;
+            max-width: 843px;
+            color: var(--Black, #232536);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 64px; /* 133.333% */
+            letter-spacing: -2px;
+        }
+        h4{
+            margin-bottom: 62px;
+            color: var(--Black, #232536);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px; 
+        }
+    }
+    .popular-desc{
+        color: var(--Medium-grey, #6D6E76);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; 
+    }
+}
+
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Open Sans', sans-serif;

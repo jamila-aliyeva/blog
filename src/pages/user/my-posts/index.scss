@@ -1,0 +1,92 @@
+input{
+    padding: 16px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 64px ;
+    margin-bottom: 54px;
+    color: var(--Black, #232536);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+}
+h2{
+    margin-top:54px ;
+    margin-bottom: 39px;
+    font-family: 'Inter', sans-serif;
+    color: var(--Black, #232536);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px; /* 133.333% */
+    letter-spacing: -2px;
+}
+.my-posts-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal {
+    transition: 1s all;
+    position: fixed;
+    top: -1000px;
+    left: 0;
+    z-index: 99999;
+    height: 100vh;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffd050bd;
+  }
+  
+  .showModal {
+    transition: 1s all;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    background: #ffd050bd;
+    backdrop-filter: blur(5px);
+  }
+  
+  .modal-body {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      background: #fff;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    
+    .modal-action {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+    
+    .modal-input {
+      display: block;
+      padding: 15px 20px;
+      border: 1px solid #ddd;
+      outline: none;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 15px;
+    }
+    .modal-btn-success {
+        background: #0eff2a;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        font-size: 18px;
+      }
+      
+      .modal-btn-danger {
+        background: #FFD050;
+        color: #000;
+        padding: 10px 20px;
+        border: none;
+        font-size: 18px;
+      }

@@ -1,0 +1,44 @@
+.register{
+    h2{
+        margin-top: 100px;
+        margin-bottom: 40px;
+        color: #232536;
+        text-align: center;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 64px;
+        letter-spacing: -2px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    input{
+        margin-bottom: 16px;
+        padding: 16px;
+        width: 100%;
+        color: var(--Black, #232536);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; 
+    }
+    button{
+        margin-top: 30px;
+        margin-bottom: 400px;
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        padding: 16px;
+        background: var(--Yellow, #FFD050);
+        color: var(--Black, #232536);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+        cursor: pointer;
+        &:hover{
+            box-shadow: 0 0 5px grey;
+        }
+    }
+}

@@ -1,0 +1,90 @@
+// .account{
+//     h2{
+//         margin-top: 100px;
+//         margin-bottom: 18px;
+//         color: #232536;
+//         text-align: center;
+//         font-size: 48px;
+//         font-style: normal;
+//         font-weight: 700;
+//         line-height: 64px;
+//         letter-spacing: -2px;
+//         font-family: 'Open Sans', sans-serif;
+//     }
+//     input{
+//         margin-bottom: 16px;
+//         padding: 16px;
+//         width: 100%;
+//         color: var(--Black, #232536);
+//         font-family: 'Inter', sans-serif;
+//         font-size: 16px;
+//         font-style: normal;
+//         font-weight: 400;
+//         line-height: 28px; 
+//     }
+//     button{
+//         margin-top: 50px;
+//         // margin-bottom: 400px;
+//         width: 100%;
+//         border: none;
+//         padding: 16px;
+//         background: var(--Yellow, #FFD050);
+//         color: var(--Black, #232536);
+//         font-family: 'Open Sans', sans-serif;
+//         font-size: 24px;
+//         font-style: normal;
+//         font-weight: 700;
+//         line-height: 32px;
+//     }
+// }
+
+.form-title {
+    margin-top: 100px;
+    margin-bottom: 18px;
+    color: #232536;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+  }
+  
+  .form {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+  
+  .form-input {
+    transition: 0.5s all;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    border: 1px solid #dfdfdf;
+    margin: 10px 0;
+    outline: none;
+  }
+  .post-title{
+    margin: 20px;
+    color: #232536;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .btn-yellow{
+    border: none;
+    padding-inline: 30px;
+    cursor: pointer;
+    background: var(--Yellow, #FFD050);
+    color: var(--Black, #232536);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Open Sans', sans-serif;

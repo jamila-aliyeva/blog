@@ -1,0 +1,100 @@
+.all-posts{
+    margin-top: 100px;
+    input{
+        padding: 16px;
+        border-radius: 10px;
+        width: 100%;
+        margin-top: 64px ;
+        margin-bottom: 54px;
+        color: var(--Black, #232536);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px; 
+    }
+    h2{
+        margin-top:54px ;
+        margin-bottom: 39px;
+        font-family: 'Inter', sans-serif;
+        color: var(--Black, #232536);
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 64px; /* 133.333% */
+        letter-spacing: -2px;
+    }
+    .posts-card-wrapper{
+        .posts-card{
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            .card-img{
+                img{
+                    max-width: 400px;
+                    height: 200px;
+                }
+            }
+        }
+        .posts-content{
+            h4{
+            color: var(--Purple, #592EA9);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px; 
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            }
+            h3{
+                max-width: 673.388px;
+            color: var(--Black, #232536);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 48px; /* 133.333% */
+            letter-spacing: -2px;
+            }
+        }
+    }
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    margin: 40px auto 20px auto;
+  }
+  
+  .pagination-button {
+    transition: 0.5s all;
+    padding: 10px;
+    border: 1px solid #232536;
+    background: #fff;
+    color: #232536;
+    border-radius: 5px;
+  }
+  
+  .active-page {
+    transition: 0.5s all;
+    background: #232536;
+    color: #fff;
+  }
+  
+  .disabled {
+    transition: 0.5s all;
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+
+  @media (max-width: 730px){
+    .posts-card{
+        flex-wrap: wrap;
+    }
+  }
+// font-family: 'Inter', sans-serif;
+// font-family: 'Open Sans', sans-serif;

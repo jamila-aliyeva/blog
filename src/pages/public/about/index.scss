@@ -1,0 +1,90 @@
+.about-top{
+    background-color: #F4F0F8;
+    .about-us-wrapper{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    //   gap: 54px;
+      h5{
+        padding-top: 133px;
+        color: var(--Black, #232536);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; 
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      h3{
+        max-width: 481px;
+        color: var(--Black, #232536);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 40px; 
+        letter-spacing: -1px;
+      }
+      p{
+        padding-bottom: 109px;
+        max-width: 516px;
+        color: var(--Medium-grey, #6D6E76);
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+      }
+    }
+}
+.about-cards{
+    padding-top: 122px;
+    .cards-wrapper{
+        display: flex;
+        align-items: center;
+        // flex-wrap: wrap;
+        gap: 137px;
+        padding-bottom: 128px;
+        .card-aside{
+         h2{
+            font-family: 'Open Sans', sans-serif;
+            color: #232536;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 48px; /* 133.333% */
+            letter-spacing: -2px;
+         }
+         h4{
+            color: var(--Black, #232536);
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 32px;
+            max-width: 519px;
+         }
+         p{
+            color: var(--Black, #232536);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+            max-width: 519px;
+            
+         }
+        }
+        .card-bside{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+@media(max-width: 900px){
+  .cards-wrapper{
+    flex-direction: column;
+  }
+}
