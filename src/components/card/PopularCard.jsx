@@ -33,15 +33,15 @@ const PopularCard = ({ item }) => {
           <span className="created">
             {item.user.first_name} {item.user.last_name}
           </span>{" "}
-          {/* |{" "}
+          |{" "}
           {new Date(item.category.updatedAt).toLocaleDateString(undefined, {
             year: "numeric",
             month: "long",
             day: "numeric",
-          })} */}
+          })}
         </h4>
 
-        {/* <h5>{item.category.description}</h5> */}
+        <h5>{item.category.description.slice(0, 35) + "..."}</h5>
 
         {/* <p>{item.category.description}</p> */}
       </Link>

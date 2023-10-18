@@ -36,8 +36,8 @@ const AllPostsCard = ({ allPosts }) => {
       </div>
       <div className="posts-content">
         <h4>{allPosts.category.name}</h4>
-        <h3>{allPosts.description.slice(0, 70)}</h3>
-        <p>{allPosts.description}</p>
+        <h3>{allPosts.description.slice(0, 35) + "..."}</h3>
+        <p>{allPosts.description.slice(0, 35) + "..."}</p>
       </div>
     </div>
   );
