@@ -36,11 +36,18 @@ const Login = () => {
     <section className="loginPage">
       <div className="container">
         <h2>Login</h2>
-        <form onSubmit={submit}>
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
-          <button>Login</button>
-        </form>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+          }}>
+          <form onSubmit={submit} style={{ width: "600px" }}>
+            <input name="username" type="text" placeholder="Username" />
+            <input name="password" type="password" placeholder="Password" />
+            <button>Login</button>
+          </form>
+        </div>
       </div>
     </section>
   );
