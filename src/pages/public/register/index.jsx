@@ -7,7 +7,6 @@ import { TOKEN } from "../../../constants";
 import { AuthContext } from "../../../context/AuthContext";
 import request from "../../../server";
 
-
 import "./style.scss";
 
 const Register = () => {
@@ -38,14 +37,21 @@ const Register = () => {
     <section className="register">
       <div className="container">
         <h2>Register</h2>
-        <form onSubmit={submit}>
-          <input type="text" name="first_name" placeholder="Firstname" />
-          <input type="text" name="last_name" placeholder="Firstname" />
-          <input type="text" name="username" placeholder="Firstname" />
-          <input type="password" name="password" placeholder="Password" />
-          <input type="password" placeholder="Confirm password" />
-          <button>Register</button>
-        </form>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+          }}>
+          <form onSubmit={submit} style={{ width: "600px" }}>
+            <input type="text" name="first_name" placeholder="Firstname" />
+            <input type="text" name="last_name" placeholder="Firstname" />
+            <input type="text" name="username" placeholder="Firstname" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="password" placeholder="Confirm password" />
+            <button>Register</button>
+          </form>
+        </div>
       </div>
     </section>
   );
