@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import { AuthContext } from "./context/AuthContext";
@@ -14,9 +14,10 @@ import PostPage from "./pages/public/post";
 import Myposts from "./pages/user/my-posts";
 import PostsPage from "./pages/public/posts";
 import Register from "./pages/public/register";
+import Dashboard from "./pages/admin/dashboard";
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, role } = useContext(AuthContext);
 
   return (
     <>
@@ -37,10 +38,14 @@ function App() {
             ) : (
               <Route path="*" element={<NotFoundPage />} />
             )}
-            {isAuthenticated ? (
-              <Route path="/account" element={<Account />} />
-            ) : null}
+            <Route
+              path="/account"
+              element={isAuthenticated ? <Account /> : <Navigate to="/login" />}
+            />
           </Route>
+          {isAuthenticated && role === "admin" ? (
+            <Route path="/dashboard" element={<Dashboard />} />
+          ) : null}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

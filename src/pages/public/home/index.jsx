@@ -29,9 +29,8 @@ const HomePage = () => {
     try {
       setLoading(true);
       let { data } = await request.get("post/lastone");
-      // console.log(data);
+      console.log(data);
       setData([data]);
-      // console.log(data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -88,7 +87,7 @@ const HomePage = () => {
         }}>
         <div className="container">
           {loading ? (
-            <div>LOADING...</div>
+            <div className="enter-loading">LOADING...</div>
           ) : (
             data.map((el) => (
               <Fragment key={el._id}>
@@ -138,7 +137,7 @@ const HomePage = () => {
               autoPlaySpeed={100}
               keyBoardControl={true}>
               {loading ? (
-                <div>LOADING...</div>
+                <div className="enter-loading">LOADING...</div>
               ) : (
                 post.map((item, i) => <PopularCard key={i} item={item} />)
               )}
@@ -161,7 +160,7 @@ const HomePage = () => {
               autoPlaySpeed={100}
               keyBoardControl={true}>
               {loading ? (
-                <div>Loading...</div>
+                <div className="enter-loading">Loading...</div>
               ) : (
                 category.map(
                   (category, i) => <CategoryCard key={i} category={category} />
