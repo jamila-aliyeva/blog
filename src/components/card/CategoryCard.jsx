@@ -33,7 +33,7 @@ const CategoryCard = ({ category }) => {
           />
 
           <h4>{category.name}</h4>
-          <p>{category.description}</p>
+          <p>{category.description.slice(0, 75) + "..."}</p>
         </Link>
       </div>
     </>

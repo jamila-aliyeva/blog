@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { AuthContext } from "./context/AuthContext";
 
 import FrontLayout from "./components/layout/front";
-import AdminLayout from "./pages/admin/dashboard";
+// import AdminLayout from "./pages/admin/dashboard";
 
 import Account from "./pages/account/index";
 import AboutusPage from "./pages/public/about";
@@ -21,6 +21,7 @@ import Dashboard from "./pages/admin/dashboard";
 import CategoriesPage from "./pages/admin/categories";
 import AdminPostsPage from "./pages/admin/post";
 import UsersPage from "./pages/admin/user";
+import AdminLayout from "./components/layout/admin";
 
 function App() {
   const { isAuthenticated, role } = useContext(AuthContext);
@@ -40,7 +41,16 @@ function App() {
             <Route path="/login" element={<Login />} />
 
             {isAuthenticated ? (
-              <Route path="/my-posts" element={<Myposts />} />
+              <Route
+                path="/my-posts"
+                element={
+                  isAuthenticated && role === "user" ? (
+                    <Myposts />
+                  ) : (
+                    <Navigate to="/login" />
+                  )
+                }
+              />
             ) : (
               <Route path="*" element={<NotFoundPage />} />
             )}
@@ -49,15 +59,18 @@ function App() {
               element={isAuthenticated ? <Account /> : <Navigate to="/login" />}
             />
           </Route>
-          {isAuthenticated && role === "admin" ? (
-            <Route element={<AdminLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/categories" element={<CategoriesPage />} />
-              <Route path="/adminPost" element={<AdminPostsPage />} />
-              <Route path="/users" element={<UsersPage />} />
-            </Route>
-          ) : null}
           <Route path="*" element={<NotFoundPage />} />
+
+          <Route element={<AdminLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/adminPost" element={<AdminPostsPage />} />
+            <Route path="/users" element={<UsersPage />} />
+          </Route>
+
+          {/* {isAuthenticated && role === "admin" ? (
+            <Route path="/dashboard" element={<Dashboard />} />
+          ) : null} */}
         </Routes>
       </BrowserRouter>
     </>

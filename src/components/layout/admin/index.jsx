@@ -1,7 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import Proptypes from "prop-types";
-import { Layout, Menu, Button, theme, Modal } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -11,37 +9,31 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 
-import "./AdminLayout.css";
-import IS_LOGIN from "../constants";
+import { Layout, Menu, Button, theme, Modal } from "antd";
+
+import "./style.scss";
+import { AuthContext } from "../../../context/AuthContext";
 
 const { Header, Sider, Content } = Layout;
-const AdminLayout = ({ setIsLogin }) => {
+
+const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { logout } = useContext(AuthContext);
   const [collapsed, setCollapsed] = useState(false);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const logout = () => {
-    Modal.confirm({
-      title: "Do you want to exit ?",
-      onOk: () => {
-        navigate("/login");
-        setIsLogin(false);
-        localStorage.removeItem(IS_LOGIN);
-      },
-    });
-  };
-
   return (
     <Layout>
       <Sider
-        className="sider-aside"
+        className="admin-aside"
         trigger={null}
         collapsible
         collapsed={collapsed}>
-        <div className="admin-logo">Logo</div>
+        <div className="admin-logo">{collapsed ? "LMS" : "LMS admin"}</div>
         <Menu
           theme="dark"
           mode="inline"
@@ -53,19 +45,30 @@ const AdminLayout = ({ setIsLogin }) => {
               label: <Link to="/dashboard">Dashboard</Link>,
             },
             {
-              key: "/teachers",
+              key: "/categories",
               icon: <UserOutlined />,
-              label: <Link to="/teachers">Teachers</Link>,
+              label: <Link to="/categories">Categories</Link>,
             },
             {
-              key: "/students",
+              key: "/adminPost",
               icon: <UsergroupDeleteOutlined />,
-              label: <Link to="/students">Students</Link>,
+              label: <Link to="/adminPost">Posts</Link>,
             },
             {
-              key: "4",
               icon: <LoginOutlined />,
-              label: <Link onClick={logout}>Logout</Link>,
+              label: (
+                <Button
+                  danger
+                  type="primary"
+                  onClick={() =>
+                    Modal.confirm({
+                      title: "Do you want to exit ?",
+                      onOk: () => logout(navigate),
+                    })
+                  }>
+                  Logout
+                </Button>
+              ),
             },
           ]}
         />
@@ -102,9 +105,4 @@ const AdminLayout = ({ setIsLogin }) => {
   );
 };
 
-AdminLayout.Proptypes = {
-  setIsLogin: Proptypes.func,
-};
 export default AdminLayout;
-
-// 1001
