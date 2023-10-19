@@ -18,6 +18,13 @@
             height: 200px;
         }
         .category-card{
+            border: 1px solid #6D6E76;
+            border-radius: 5px;
+            padding: 32px;
+            transition: 0.5s;
+            &:hover{
+                background-color: #FFD050;
+            }
             h4{
                 color: var(--Black, #232536);
                 font-size: 28px;

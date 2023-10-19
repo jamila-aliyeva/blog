@@ -5,6 +5,7 @@ import { ENDPOINT } from "../../constants";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
+import icon from "../../assets/images/Icon.svg";
 const CategoryCard = ({ category }) => {
   const [emptyImg, setEmptyImg] = useState({});
 
@@ -25,7 +26,7 @@ const CategoryCard = ({ category }) => {
             onError={() => EmptyImage(category._id)}
             src={
               emptyImg[category._id]
-                ? "https://static.wixstatic.com/media/bb1bd6_f221ad0f4d6f4103bf1d37b68b04492e~mv2.png/v1/fit/w_1000%2Ch_608%2Cal_c%2Cq_80,enc_auto/file.jpg"
+                ? icon
                 : `${ENDPOINT}upload/${category.photo?._id}.jpg`
             }
             alt="img"
@@ -33,7 +34,7 @@ const CategoryCard = ({ category }) => {
           />
 
           <h4>{category.name}</h4>
-          <p>{category.description.slice(0, 75) + "..."}</p>
+          <p>{category.description.slice(0, 55) + "..."}</p>
         </Link>
       </div>
     </>
