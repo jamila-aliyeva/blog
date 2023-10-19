@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import "./index.scss";
 import PostCard from "../../../components/card/PostCard";
 import request from "../../../server";
-import { Modal } from "antd";
+import { Button, Modal, Upload } from "antd";
 
 function Myposts() {
   const [posts, setPosts] = useState([]);
@@ -14,7 +14,7 @@ function Myposts() {
   const [totalPost, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({ photo: "652d5f505b81cf248eaa1b04" });
 
   async function getPosts(page) {
     try {
@@ -115,15 +115,20 @@ function Myposts() {
       setPosts(res.data.data);
       setTotalPage(res.data.pagination.total);
       getPosts(currentPage);
+
+      setIsModalOpen(false);
     } catch (error) {
       console.log(error);
+      setIsModalOpen(false);
     } finally {
       setLoading(false);
+      setIsModalOpen(false);
     }
   }
 
   useEffect(() => {
     getPosts(currentPage);
+    console.log(posts);
   }, [currentPage]);
 
   return (
@@ -178,31 +183,12 @@ function Myposts() {
               name="tags"
               placeholder="Post Tags"
             />
-            {/* <Upload
-              name="avatar"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-              onChange={upLoadImage}>
-              {imageUrl ? (
-                <img
-                  src={imageUrl}
-                  alt="avatar"
-                  style={{
-                    width: "100%",
-                  }}
-                />
-              ) : (
-                uploadButton
-              )}
-            </Upload> */}
           </form>
         </Modal>
         {/* modal */}
 
         {loading ? (
-          <h3 className="err-loading">Loading...</h3>
+          <h3 className="enter-loading">Loading...</h3>
         ) : posts.length ? (
           posts.map((post) => (
             <div key={post._id}>

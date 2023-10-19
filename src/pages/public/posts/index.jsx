@@ -70,7 +70,7 @@ const PostsPage = () => {
 
         <div className="posts-card-wrapper">
           {loading ? (
-            <h3 className="err-loading">Loading...</h3>
+            <h3 className="enter-loading">Loading...</h3>
           ) : data.length ? (
             data.map((elm, i) => <AllPostsCard key={i} allPosts={elm} />)
           ) : (

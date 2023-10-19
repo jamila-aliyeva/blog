@@ -62,7 +62,7 @@ const CategoryPage = () => {
       <div className="category-wrapper">
         <div className="container">
           {loading ? (
-            <h3 className="err-loading">Loading...</h3>
+            <h3 className="enter-loading">Loading...</h3>
           ) : (
             data.map((el) => <CategoryCard key={el._id} onecategory={el} />)
           )}

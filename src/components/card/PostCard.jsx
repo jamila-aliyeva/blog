@@ -31,20 +31,14 @@ function PostCard({ post, delFunc }) {
       key={post?._id}
       style={{ cursor: "pointer" }}>
       <div className="post-body">
-        <p className="hero-category">
-          {post?.category ? post?.category.name : "Coding"}
-        </p>
+        <p className="hero-category">{post?.category}</p>
         <h1 className="post-title">{post?.title}.</h1>
-        <p className="post-descr">
-          {post?.category
-            ? post?.category
-            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}
-        </p>
+        <p className="post-descr">{post?.category}</p>
         <div style={{ display: "flex" }}>
-          <button type="button" onClick={() => deleteFunc(post._id)}>
+          {/* <button type="button" onClick={() => deleteFunc(post._id)}>
             Delete
           </button>
-          <button>Edit</button>
+          <button>Edit</button> */}
         </div>
       </div>
     </div>

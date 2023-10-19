@@ -87,7 +87,22 @@ const HomePage = () => {
         }}>
         <div className="container">
           {loading ? (
-            <div className="enter-loading">LOADING...</div>
+            <>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <div className="enter-loading">LOADING...</div>
+            </>
           ) : (
             data.map((el) => (
               <Fragment key={el._id}>
@@ -137,7 +152,7 @@ const HomePage = () => {
               autoPlaySpeed={100}
               keyBoardControl={true}>
               {loading ? (
-                <div className="enter-loading">LOADING...</div>
+                <div className="enter-loading">Loading...</div>
               ) : (
                 post.map((item, i) => <PopularCard key={i} item={item} />)
               )}
