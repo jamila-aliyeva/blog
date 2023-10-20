@@ -5,9 +5,17 @@
    gap: 100px;
 //    justify-content: space-between;
    .dashboard-card{
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 0 5px grey;
     border-radius: 10px;
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    img{
+        width: 30px;
+        background: transparent;
+        border-radius: 50%;
+    }
     &:hover{
         box-shadow: 0 0 5px #001529;
     }

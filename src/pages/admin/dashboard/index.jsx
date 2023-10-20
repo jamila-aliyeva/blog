@@ -42,9 +42,23 @@ const Dashboard = () => {
       <h3 style={{ margin: "50px", textAlign: "center" }}>Overview</h3>
       <div className="dashboard-wrap">
         <div className="dashboard-card">
-          Categories: {loading ? "..." : total}
+          <div>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/6821/6821002.png"
+              alt=""
+            />
+          </div>
+          <div>Categories: {loading ? "..." : total}</div>
         </div>
-        <div className="dashboard-card">Posts: {loading ? "..." : total}</div>
+        <div className="dashboard-card">
+          <div>
+            <img
+              src="https://w7.pngwing.com/pngs/502/794/png-transparent-white-arrow-going-up-computer-icons-dashboard-car-symbol-dashboard-icon-miscellaneous-angle-logo.png"
+              alt=""
+            />
+          </div>
+          <div>Posts: {loading ? "..." : total}</div>
+        </div>
       </div>
       <div style={{ marginTop: "60px" }}>
         <p>
