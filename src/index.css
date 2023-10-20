@@ -26,3 +26,7 @@ li{
     color: #232536;
     font-family: 'Open Sans', sans-serif;
 }
+.ant-table-title{
+    padding: 0px !important;
+    padding-bottom: 26px !important;
+}

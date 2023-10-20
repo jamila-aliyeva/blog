@@ -9,11 +9,14 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
+import StoreProvider from "./redux/store/index.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      <StoreProvider>
+        <App />
+      </StoreProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

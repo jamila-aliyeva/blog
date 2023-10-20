@@ -12,19 +12,28 @@ import {
 import { Layout, Menu, Button, theme, Modal } from "antd";
 
 import "./style.scss";
-import { AuthContext } from "../../../context/AuthContext";
+// import { AuthContext } from "../../../context/AuthContext";
 
 const { Header, Sider, Content } = Layout;
 
 const AdminLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { logout } = useContext(AuthContext);
+  // const { logout } = useContext(AuthContext);
   const [collapsed, setCollapsed] = useState(false);
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const logout = () => {
+    Modal.confirm({
+      title: "Do you want to exit ?",
+      onOk: () => {
+        navigate("/");
+      },
+    });
+  };
 
   return (
     <Layout>
@@ -33,7 +42,7 @@ const AdminLayout = () => {
         trigger={null}
         collapsible
         collapsed={collapsed}>
-        <div className="admin-logo">{collapsed ? "LMS" : "LMS admin"}</div>
+        <div className="admin-logo">{collapsed ? "⚙️" : "Admin"}</div>
         <Menu
           theme="dark"
           mode="inline"
@@ -56,19 +65,7 @@ const AdminLayout = () => {
             },
             {
               icon: <LoginOutlined />,
-              label: (
-                <Button
-                  danger
-                  type="primary"
-                  onClick={() =>
-                    Modal.confirm({
-                      title: "Do you want to exit ?",
-                      onOk: () => logout(navigate),
-                    })
-                  }>
-                  Logout
-                </Button>
-              ),
+              label: <Link onClick={logout}>Logout</Link>,
             },
           ]}
         />

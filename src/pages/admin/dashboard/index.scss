@@ -1,0 +1,27 @@
+.dashboard-wrap{
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 100px;
+//    justify-content: space-between;
+   .dashboard-card{
+    padding: 30px;
+    box-shadow: 0 0 5px grey;
+    border-radius: 10px;
+    &:hover{
+        box-shadow: 0 0 5px #001529;
+    }
+   }
+}
+.dashboard-middle{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-radius: 14px;
+    justify-content: space-between;
+    background-color: #84bafc;
+
+    img{
+        width: 200px;
+    }
+}
