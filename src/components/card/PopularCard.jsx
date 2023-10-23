@@ -17,16 +17,18 @@ const PopularCard = ({ item }) => {
   return (
     <div className="popular-card">
       <Link to={`posts/${item._id}`}>
-        <LazyLoadImage
-          className="category-img"
-          onError={() => EmptyImage(item._id)}
-          src={
-            emptyImg[item._id]
-              ? "https://static.wixstatic.com/media/bb1bd6_f221ad0f4d6f4103bf1d37b68b04492e~mv2.png/v1/fit/w_1000%2Ch_608%2Cal_c%2Cq_80,enc_auto/file.jpg"
-              : `${ENDPOINT}upload/${item.photo?._id}.jpg`
-          }
-          effect="blur"
-        />
+        <div>
+          <LazyLoadImage
+            className="category-img"
+            onError={() => EmptyImage(item._id)}
+            src={
+              emptyImg[item._id]
+                ? "https://static.wixstatic.com/media/bb1bd6_f221ad0f4d6f4103bf1d37b68b04492e~mv2.png/v1/fit/w_1000%2Ch_608%2Cal_c%2Cq_80,enc_auto/file.jpg"
+                : `${ENDPOINT}upload/${item.photo?._id}.jpg`
+            }
+            effect="blur"
+          />
+        </div>
 
         <h4>
           By
@@ -41,7 +43,7 @@ const PopularCard = ({ item }) => {
           })}
         </h4>
 
-        <h5>{item.category.description.slice(0, 35) + "..."}</h5>
+        <p>{item.category.description}</p>
 
         {/* <p>{item.category.description}</p> */}
       </Link>

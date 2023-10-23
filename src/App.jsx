@@ -39,6 +39,7 @@ function App() {
             <Route path="/about-us" element={<AboutusPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            {/* <Route path="/my-posts" element={<Myposts />} /> */}
 
             {isAuthenticated ? (
               <Route
@@ -54,6 +55,7 @@ function App() {
             ) : (
               <Route path="*" element={<NotFoundPage />} />
             )}
+
             <Route
               path="/account"
               element={isAuthenticated ? <Account /> : <Navigate to="/login" />}

@@ -89,17 +89,19 @@
         .posts-card{
             margin-bottom: 64px;
             display: flex;
-            justify-content: space-between;
+            gap: 80px;
             align-items: center;
             .card-img{
                 img{
+                    margin-top: 0px;
                     max-width: 400px;
+                    width: 100%;
                 }
             }
         }
         .posts-content{
-            h4{
-            color: var(--Purple, #592EA9);
+            p{
+            color: var(--Purple, #232536);
             font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-style: normal;
@@ -108,7 +110,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             }
-            h3{
+            h4{
             max-width: 673.388px;
             color: var(--Black, #232536);
             font-family: 'Open Sans', sans-serif;

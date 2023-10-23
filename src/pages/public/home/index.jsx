@@ -20,6 +20,10 @@ const HomePage = () => {
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const redr = (id) => {
+    window.location.href = "/posts/" + id;
+  };
+
   useEffect(() => {
     getPosts();
     getPopularBlog();
@@ -42,7 +46,6 @@ const HomePage = () => {
       setLoading(true);
       let res = await request.get("post/lastones");
       setPost(res.data);
-      // console.log(res);
     } catch (err) {
       console.log(err);
     } finally {
@@ -61,19 +64,19 @@ const HomePage = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1029 },
       items: 3,
       partialVisibilityGutter: 30,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 500 },
+      breakpoint: { max: 1029, min: 830 },
       items: 2,
       partialVisibilityGutter: 30,
     },
     mobile: {
-      breakpoint: { max: 500, min: 0 },
+      breakpoint: { max: 830, min: 0 },
       items: 1,
-      partialVisibilityGutter: 30,
+      partialVisibilityGutter: 20,
     },
   };
   return (
@@ -83,7 +86,8 @@ const HomePage = () => {
         className="lasted-one"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          height: "750px",
+          backgroundRepeat: "no-repeat",
+          height: "880px",
         }}>
         <div className="container">
           {loading ? (
@@ -110,12 +114,13 @@ const HomePage = () => {
                   Posted on <b>{el.category.name}</b>
                 </p>
                 <h1 className="hero-title">
-                  {el.category.name}, {el.category.description.slice(0, 36)}.
+                  {/* {el.category.description.slice(0, 36)}. */}
+                  {el.title}
                 </h1>
                 <p className="hero-detail">
                   By{" "}
                   <span className="text-yellow">
-                    {el.user.first_name} {el.user.last_name}
+                    {/* {el.user.first_name} {el.user.last_name} */}
                   </span>{" "}
                   |{" "}
                   {new Date(el.category.updatedAt).toLocaleDateString(
@@ -129,7 +134,7 @@ const HomePage = () => {
                 </p>
                 <p className="hero-descr">{el.category.description}</p>
 
-                <Link to={"/posts"} className="btn btn-yellow">
+                <Link onClick={() => redr(el._id)} className="btn btn-yellow">
                   Read More {">"}
                 </Link>
               </Fragment>

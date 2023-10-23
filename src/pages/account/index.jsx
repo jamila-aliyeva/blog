@@ -172,7 +172,7 @@ const Accout = () => {
               className="avatar-uploader"
               showUploadList={false}
               onChange={uploadPhoto}>
-              {photo ? (
+              {/* {photo ? (
                 <img
                   src={getImage(photo)}
                   alt="avatar"
@@ -190,7 +190,7 @@ const Accout = () => {
                     Upload
                   </div>
                 </div>
-              )}
+              )} */}
             </Upload>
             <center>
               <button

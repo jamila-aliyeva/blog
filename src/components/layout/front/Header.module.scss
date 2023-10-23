@@ -1,0 +1,239 @@
+// header{
+//     font-family: 'Inter', sans-serif;
+//     padding: 13px;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     z-index: 25;
+//     background: var(--Black, #232536);
+//     .header-wrapper{
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         .header-logo{
+//             .menu-bar{
+//                 display: none;
+//             }
+//         }
+//         .header-section{
+//             display: flex;
+//             align-items: center;
+//             gap: 83px;
+//             .sections{
+//                a{
+//                 margin-left: 24px;
+//                 color: var(--Light, #FFF);
+//                 font-size: 16px;
+//                 font-style: normal;
+//                 font-weight: 400;
+//                 line-height: 28px;
+//             }
+//             .active{
+//                color: bisque;
+//             }
+//             }
+//             .login{
+//                 padding: 16px 48px;
+//                background-color: #FFF;
+//                color: var(--Black, #232536);
+//                font-family: 'Martian Mono', monospace; 
+//                 font-size: 18px;
+//                 font-style: normal;
+//                 font-weight: 700;
+//                 line-height: 24px; 
+//             }
+//         }
+//     }
+// }
+// .right {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     display: flex;
+//     gap: 83px;
+//     @media (max-width: 770px) {
+//       gap: 20px;
+//     }
+//     .openNav {
+//       display: none;
+//       background-color: transparent;
+//       cursor: pointer;
+//       @media (max-width: 770px) {
+//         display: flex;
+//       }
+//     }
+//     .nav_menu {
+//       display: flex;
+//       align-items: center;
+//       gap: 24px;
+//       @media (max-width: 770px) {
+//         position: fixed;
+//         top: 0;
+//         left: -100%;
+//         width: 100%;
+//         height: 100vh;
+//         background-color: #232536;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         transition: 0.3s ease-in-out;
+//         &.navOpen {
+//           left: 0;
+//         }
+//       }
+//       .closeNav {
+//         display: none;
+//         background-color: transparent;
+//         cursor: pointer;
+//         @media (max-width: 770px) {
+//           display: flex;
+//           position: absolute;
+//           top: 25px;
+//           right: 25px;
+//         }
+//       }
+//       li {
+//         a {
+//           color: white;
+//           position: relative;
+//           &::before {
+//             content: "";
+//             width: 0px;
+//             height: 1px;
+//             position: absolute;
+//             bottom: -5px;
+//             left: 0;
+//             background-color: white;
+//             border-radius: 50px;
+//             transition: 0.2s linear;
+//           }
+//           &:hover::before {
+//             width: 100%;
+//           }
+//         }
+//         &.login_accaunt {
+//           button {
+//             padding: 16px 48px;
+//             font-size: 18px;
+//             background-color: white;
+//             color: #232536;
+//             font-weight: 700;
+//             cursor: pointer;
+//           }
+//         }
+//     }}
+//     }
+
+    
+// @media (max-width: 820px){
+//     .sections{
+//         display: none;
+//     }
+//     .menu-bar{
+//    display: block;
+//     }
+// }
+// @media (max-width: 450px){
+//     .header-logo{
+//         display: none;
+//     }
+// }
+
+
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #232536;
+  position: sticky;
+  top: 0;
+  transition: 0.2s linear;
+  z-index: 9;
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    transition: 0.2s linear;
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      gap: 83px;
+      @media (max-width: 770px) {
+        gap: 20px;
+      }
+      .openNav {
+        display: none;
+        background-color: transparent;
+        cursor: pointer;
+        @media (max-width: 770px) {
+          display: flex;
+        }
+      }
+      .nav_menu {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        @media (max-width: 770px) {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100vh;
+          background-color: #232536;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.3s ease-in-out;
+          &.navOpen {
+            left: 0;
+          }
+        }
+        .closeNav {
+          display: none;
+          background-color: transparent;
+          cursor: pointer;
+          @media (max-width: 770px) {
+            display: flex;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+          }
+        }
+        li {
+          a {
+            color: white;
+            position: relative;
+            &::before {
+              content: "";
+              width: 0px;
+              height: 1px;
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              background-color: #fff;
+              border-radius: 50px;
+              transition: 0.2s linear;
+            }
+            &:hover::before {
+              width: 100%;
+            }
+          }
+          &.login_accaunt {
+            button {
+              background-color: white;
+              padding: 16px 48px;
+              font-size: 18px;
+              color: #232536;
+              font-weight: 700;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

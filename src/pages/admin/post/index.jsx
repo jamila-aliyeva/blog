@@ -4,26 +4,60 @@ import { Link } from "react-router-dom";
 import {
   Button,
   Flex,
-  Image,
+  Form,
   Input,
+  Modal,
   Pagination,
   Space,
-  Spin,
   Table,
+  Upload,
 } from "antd";
 
 import { LIMIT } from "../../../constants";
-import { SearchPosts, changePostspage, getPosts } from "../../../redux/action";
+import {
+  SearchPosts,
+  changePostspage,
+  controlPostModal,
+  deletePost,
+  editPost,
+  getPosts,
+  sentPost,
+  uploadPostImage,
+} from "../../../redux/action";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
+
 // import { getImageUser } from "../../../utils/getImageUser";
 
 const AdminPostsPage = () => {
   const dispatch = useDispatch();
-  const { categories, total, loading, activePage, search } = useSelector(
-    (state) => state.categories
-  );
+  const {
+    categories,
+    total,
+    loading,
+    activePage,
+    search,
+    isModalOpen,
+    selected,
+    isModalLoading,
+    imageUrl,
+    imageLoading,
+  } = useSelector((state) => state.posts);
+  const [form] = Form.useForm();
+
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
+
+  const handleOk = async () => {
+    const values = await form.validateFields();
+    // values.photo = imageUrl._id;
+    dispatch(sentPost({ values, selected, activePage, search, form }));
+  };
+
+  const closeModal = () => {
+    dispatch(controlPostModal(false));
+  };
+
   const columns = [
     {
       title: "Image",
@@ -48,11 +82,16 @@ const AdminPostsPage = () => {
       key: "_id",
       render: (data) => (
         <Space size="middle">
-          <Button type="primary">Edit</Button>
-          <Button type="primary" danger>
+          <Button type="primary" onClick={() => dispatch(editPost(form, data))}>
+            Edit
+          </Button>
+          <Button
+            type="primary"
+            danger
+            onClick={() => dispatch(deletePost({ id: data, search }))}>
             Delete
           </Button>
-          <Link to={`/categories/${data}`} type="primary">
+          <Link to={`/post/${data}`} type="primary">
             See posts
           </Link>
         </Space>
@@ -96,6 +135,81 @@ const AdminPostsPage = () => {
           onChange={(page) => dispatch(changePostspage(page))}
         />
       ) : null}
+
+      <Modal
+        title="Category data"
+        maskClosable={false}
+        confirmLoading={isModalLoading}
+        okText={selected === null ? "Add category" : "Save category"}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={closeModal}>
+        <Form
+          name="category"
+          autoComplete="off"
+          labelCol={{
+            span: 24,
+          }}
+          wrapperCol={{
+            span: 24,
+          }}
+          form={form}>
+          <Upload
+            name="avatar"
+            listType="picture-card"
+            className="avatar-uploader"
+            showUploadList={false}
+            onChange={(e) => dispatch(uploadPostImage(e.file.originFileObj))}>
+            <div>
+              {imageLoading ? (
+                <LoadingOutlined />
+              ) : imageUrl ? (
+                <img
+                  // src={getImage(imageUrl)}
+                  alt="avatar"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              ) : (
+                <div>
+                  <PlusOutlined />
+                  <div
+                    style={{
+                      marginTop: 8,
+                    }}>
+                    Upload
+                  </div>
+                </div>
+              )}
+            </div>
+          </Upload>
+          {/* <input type="file" onChange={uploadImage} /> */}
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[
+              {
+                required: true,
+                message: "Please fill!",
+              },
+            ]}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[
+              {
+                required: true,
+                message: "Please fill!",
+              },
+            ]}>
+            <Input.TextArea />
+          </Form.Item>
+        </Form>
+      </Modal>
     </Fragment>
   );
 };
