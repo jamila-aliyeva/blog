@@ -4,14 +4,10 @@ import { AuthContext } from "../../../context/AuthContext";
 import { UploadOutlined } from "@ant-design/icons";
 
 import "./index.scss";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import request from "../../../server";
 import { ENDPOINT } from "../../../constants";
 import { Button, Form, Input, Modal, Select, Upload } from "antd";
-
-// import edit from "../../../assets/images/edit.png";
-// import deleted from "../../../assets/images/delete.png";
 
 const MyPostsPage = () => {
   const { loading, setLoading } = useContext(AuthContext);
@@ -22,10 +18,10 @@ const MyPostsPage = () => {
   const [sortedCategories, setSortedCategories] = useState([]);
   const [userPost, setUserPost] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
   const [totalPost, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [dataLoading, setDataLoading] = useState(false);
 
   useEffect(() => {
     let options;
@@ -45,11 +41,25 @@ const MyPostsPage = () => {
       let { data } = await request.get(`post/user?page=${page}&limit=${10}`);
       // console.log(data?.data);
       setUserPost(data?.data);
+      setTotalPage(data.pagination.total);
     } catch (err) {
       console.log(err);
       toast.error("error");
     }
   }, []);
+
+  async function handleSearch(e) {
+    try {
+      setDataLoading(true);
+      const res = await request.get(`post/user?search=${e.target.value}`);
+      setUserPost(res.data.data);
+      setTotalPage(res.data.pagination.total);
+    } catch (error) {
+      toast.error("Not Found");
+    } finally {
+      setDataLoading(false);
+    }
+  }
 
   const getCategories = useCallback(async () => {
     try {
@@ -113,17 +123,17 @@ const MyPostsPage = () => {
     setCategory(value);
   };
 
-  // useEffect(() => {
-  //   deletePost();
-  // }, []);
+  useEffect(() => {
+    deletePost();
+  }, []);
 
-  // const deletePost = (id) => {
-  //   try {
-  //     request.delete(`post/${id}`);
-  //   } catch (err) {
-  //     toast.error(err);
-  //   }
-  // };
+  const deletePost = (id) => {
+    try {
+      request.delete(`post/${id}`);
+    } catch (err) {
+      toast.error(err);
+    }
+  };
 
   // const editPost = async (id) => {
   //   console.log(id);
@@ -177,8 +187,7 @@ const MyPostsPage = () => {
               </button>
             </div>
             <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={handleSearch}
               name="search"
               placeholder="Searching..."
               className="search-input"
@@ -186,33 +195,57 @@ const MyPostsPage = () => {
             />
             <div className="line"></div>
             <div className="posts-row">
-              {userPost?.map((post) => (
-                <div key={post?._id} className="post-card">
-                  <div>
+              {dataLoading ? (
+                <h3 className="enter-loading">Loading...</h3>
+              ) : userPost.length ? (
+                userPost?.map((post) => (
+                  <div key={post?._id} className="post-card">
+                    <div>
+                      <img
+                        src={
+                          post?.photo
+                            ? `${ENDPOINT}upload/${post?.photo._id}.${
+                                post?.photo.name.split(".")[1]
+                              }`
+                            : "https://static.wixstatic.com/media/bb1bd6_f221ad0f4d6f4103bf1d37b68b04492e~mv2.png/v1/fit/w_1000%2Ch_608%2Cal_c%2Cq_80,enc_auto/file.jpg"
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <div className="post-info">
+                      <div>
+                        <p className="post-subtitle">{post?.category.name}</p>
+                        <h3 className="post-title">{post?.title}</h3>
+                        <p className="post-desc">{post?.description}</p>
+                      </div>
+                      <div className="post-btn">
+                        <button className="edit-btn">Edit</button>
+                        <button className="delete-btn" onClick={deletePost}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <h3 className="err-not-found" style={{ textAlign: "center" }}>
                     <img
-                      src={
-                        post?.photo
-                          ? `${ENDPOINT}upload/${post?.photo._id}.${
-                              post?.photo.name.split(".")[1]
-                            }`
-                          : "https://static.wixstatic.com/media/bb1bd6_f221ad0f4d6f4103bf1d37b68b04492e~mv2.png/v1/fit/w_1000%2Ch_608%2Cal_c%2Cq_80,enc_auto/file.jpg"
-                      }
+                      style={{
+                        width: "300px",
+                        height: "300px",
+                      }}
+                      src="https://static.vecteezy.com/system/resources/previews/004/968/590/original/no-result-data-not-found-concept-illustration-flat-design-eps10-simple-and-modern-graphic-element-for-landing-page-empty-state-ui-infographic-etc-vector.jpg"
                       alt=""
                     />
-                  </div>
-                  <div className="post-info">
-                    <div>
-                      <p className="post-subtitle">{post?.category.name}</p>
-                      <h3 className="post-title">{post?.title}</h3>
-                      <p className="post-desc">{post?.description}</p>
-                    </div>
-                    <div className="post-btn">
-                      <button className="edit-btn">Edit</button>
-                      <button className="delete-btn">Delete</button>
-                    </div>
-                  </div>
+                  </h3>
+                  <h3
+                    className="err-not-found"
+                    style={{ textAlign: "center", marginBottom: "30px" }}>
+                    data not found
+                  </h3>
                 </div>
-              ))}
+              )}
             </div>
             {userPost.length ? (
               <div className="pagination-buttons">
