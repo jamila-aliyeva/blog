@@ -19,9 +19,11 @@ import PostsPage from "./pages/public/posts";
 import Register from "./pages/public/register";
 import Dashboard from "./pages/admin/dashboard";
 import CategoriesPage from "./pages/admin/categories";
-import AdminPostsPage from "./pages/admin/post";
+// import AdminPostsPage from "./pages/admin/post";
 import UsersPage from "./pages/admin/user";
 import AdminLayout from "./components/layout/admin";
+import Onecategory from "./pages/admin/categories/one-ctegory";
+import AdminPostsPage from "./pages/admin/post";
 
 function App() {
   const { isAuthenticated, role } = useContext(AuthContext);
@@ -66,6 +68,10 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/categories" element={<CategoriesPage />} />
+            <Route
+              path="/categories/:oneCategoryId"
+              element={<Onecategory />}
+            />
             <Route path="/adminPost" element={<AdminPostsPage />} />
             <Route path="/users" element={<UsersPage />} />
           </Route>

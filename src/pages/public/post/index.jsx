@@ -17,9 +17,14 @@ const PostPage = () => {
   }, []);
 
   const getData = async () => {
+  try{
+    setLoading(true)
     const res = await request("post/" + postId);
     setData([res.data]);
     // console.log([res.data]);
+  } finally{
+    setLoading(false)
+  }
   };
 
   const [emptyImg, setEmptyImg] = useState({});

@@ -1,25 +1,25 @@
-import {
-  // POSTS_FETCHING,
-  // POSTS_LOADING,
-  // POSTS_PAGE,
-  // POSTS_SEARCH,
-  // POSTS_TOTAL,
-  POSTS_ACTIONS,
-} from "../type/posts";
+// import {
+//   // POSTS_FETCHING,
+//   // POSTS_LOADING,
+//   // POSTS_PAGE,
+//   // POSTS_SEARCH,
+//   // POSTS_TOTAL,
+//   POSTS_ACTIONS,
+// } from "../type/posts";
 
-const initialState = {
-  categories: [],
-  total: 0,
-  ActivePage: 1,
-  loading: false,
-  error: null,
-  search: "",
-  selected: null,
-  isModalOpen: false,
-  isModalLoading: false,
-  imageUrl: null,
-  imageLoading: false,
-};
+// const initialState = {
+//   categories: [],
+//   total: 0,
+//   ActivePage: 1,
+//   loading: false,
+//   error: null,
+//   search: "",
+//   selected: null,
+//   isModalOpen: false,
+//   isModalLoading: false,
+//   imageUrl: null,
+//   imageLoading: false,
+// };
 // const postsReducer = (state = initialState, { type, payload }) => {
 //   switch (type) {
 //     case POSTS_LOADING:
@@ -35,11 +35,11 @@ const initialState = {
 //   }
 //   return state;
 
-const postsReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case POSTS_ACTIONS:
-      return { ...state, ...payload };
-  }
-  return state;
-};
-export default postsReducer;
+// const postsReducer = (state = initialState, { type, payload }) => {
+//   switch (type) {
+//     case POSTS_ACTIONS:
+//       return { ...state, ...payload };
+//   }
+//   return state;
+// };
+// export default postsReducer;

@@ -203,100 +203,100 @@ export const deleteCategory =
 
 // for posts
 
-import { POSTS_ACTIONS } from "../type/categories";
+// import { POSTS_ACTIONS } from "../type/posts";
 
-const updateChangeDataPosts = (payload) => {
-  return { type: POSTS_ACTIONS, payload };
-};
+// const updateChangeDataPosts = (payload) => {
+//   return { type: POSTS_ACTIONS, payload };
+// };
 
-export const getPosts =
-  (page = 1, search = "") =>
-  async (dispatch) => {
-    try {
-      dispatch(updateChangeDataPosts({ loading: true }));
-      const {
-        data: {
-          data,
-          pagination: { total },
-        },
-      } = await request.get("post", {
-        params: { page, limit: LIMIT, search },
-      });
-      const posts = data.map((el) => ({ ...el, key: el._id }));
-      dispatch(updateChangeDataPosts({ posts }));
-      dispatch(updateChangeDataPosts({ total }));
-    } finally {
-      dispatch(updateChangeDataPosts({ loading: false }));
-    }
-  };
+// export const getPosts =
+//   (page = 1, search = "") =>
+//   async (dispatch) => {
+//     try {
+//       dispatch(updateChangeDataPosts({ loading: true }));
+//       const {
+//         data: {
+//           data,
+//           pagination: { total },
+//         },
+//       } = await request.get("post", {
+//         params: { page, limit: LIMIT, search },
+//       });
+//       const posts = data.map((el) => ({ ...el, key: el._id }));
+//       dispatch(updateChangeDataPosts({ posts }));
+//       dispatch(updateChangeDataPosts({ total }));
+//     } finally {
+//       dispatch(updateChangeDataPosts({ loading: false }));
+//     }
+//   };
 
-export const changePostPage = (page, search) => (dispatch) => {
-  dispatch(updateChangeDataPosts({ activePage: page }));
-  dispatch(getCategories(page, search));
-};
+// export const changePostPage = (page, search) => (dispatch) => {
+//   dispatch(updateChangeDataPosts({ activePage: page }));
+//   dispatch(getCategories(page, search));
+// };
 
-export const SearchPosts = (search) => (dispatch) => {
-  dispatch(updateChangeDataPosts({ search }));
-  dispatch(updateChangeDataPosts({ activePage: 1 }));
+// export const SearchPosts = (search) => (dispatch) => {
+//   dispatch(updateChangeDataPosts({ search }));
+//   dispatch(updateChangeDataPosts({ activePage: 1 }));
 
-  dispatch(getCategories(1, search));
-};
+//   dispatch(getCategories(1, search));
+// };
 
-export const controlPostModal = (payload) => (dispatch) => {
-  dispatch(updateChangeDataPosts({ isModalOpen: payload }));
-};
+// export const controlPostModal = (payload) => (dispatch) => {
+//   dispatch(updateChangeDataPosts({ isModalOpen: payload }));
+// };
 
-export const uploadPostImage = (file) => async (dispatch) => {
-  try {
-    dispatch(updateChangeDataPosts({ imageLoading: true }));
-    const formData = new FormData();
-    formData.append("file", file);
-    const { data } = request.post("upload", formData);
-    // console.log(data);
-    dispatch(updateChangeDataPosts({ imageUrl: data }));
-  } catch (err) {
-    console.log(err);
-  } finally {
-    dispatch(updateChangeDataPosts({ imageLoading: true, imageUrl: null }));
-  }
-};
+// export const uploadPostImage = (file) => async (dispatch) => {
+//   try {
+//     dispatch(updateChangeDataPosts({ imageLoading: true }));
+//     const formData = new FormData();
+//     formData.append("file", file);
+//     const { data } = request.post("upload", formData);
+//     // console.log(data);
+//     dispatch(updateChangeDataPosts({ imageUrl: data }));
+//   } catch (err) {
+//     console.log(err);
+//   } finally {
+//     dispatch(updateChangeDataPosts({ imageLoading: true, imageUrl: null }));
+//   }
+// };
 
-export const sentPost =
-  ({ values, selected, activePage, search, form }) =>
-  async (dispatch) => {
-    try {
-      dispatch(updateChangeDataPosts({ isModalLoading: true }));
-      selected === null
-        ? await request.post("post", values)
-        : await request.put(`post/${selected}`, values);
-      dispatch(updateChangeDataPosts({ isModalOpen: false }));
-      dispatch(getCategories(activePage, search));
+// export const sentPost =
+//   ({ values, selected, activePage, search, form }) =>
+//   async (dispatch) => {
+//     try {
+//       dispatch(updateChangeDataPosts({ isModalLoading: true }));
+//       selected === null
+//         ? await request.post("post", values)
+//         : await request.put(`post/${selected}`, values);
+//       dispatch(updateChangeDataPosts({ isModalOpen: false }));
+//       dispatch(getCategories(activePage, search));
 
-      form.resetFields();
-    } finally {
-      dispatch(updateChangeDataPosts({ isModalLoading: false }));
-    }
-  };
+//       form.resetFields();
+//     } finally {
+//       dispatch(updateChangeDataPosts({ isModalLoading: false }));
+//     }
+//   };
 
-export const editPost = (form, id) => async (dispatch) => {
-  dispatch(updateChangeDataPosts({ selected: id, isModalOpen: true }));
-  const { data } = await request.get(`category/${id}`);
-  dispatch(updateChangeDataPosts({ imageUrl: data.photo }));
+// export const editPost = (form, id) => async (dispatch) => {
+//   dispatch(updateChangeDataPosts({ selected: id, isModalOpen: true }));
+//   const { data } = await request.get(`category/${id}`);
+//   dispatch(updateChangeDataPosts({ imageUrl: data.photo }));
 
-  form.setFieldsValue(data);
-};
+//   form.setFieldsValue(data);
+// };
 
-export const showModalPost = (form) => async (dispatch) => {
-  dispatch(
-    updateChangeDataPosts({ selected: null, imageUrl: null, isModalOpen: true })
-  );
-  form.resetFields();
-};
+// export const showModalPost = (form) => async (dispatch) => {
+//   dispatch(
+//     updateChangeDataPosts({ selected: null, imageUrl: null, isModalOpen: true })
+//   );
+//   form.resetFields();
+// };
 
-export const deletePost =
-  ({ id, search }) =>
-  async (dispatch) => {
-    await request.delete(`category/${id}`);
-    dispatch(getCategories(1, search));
-    dispatch(getCategories({ activePage: 1 }));
-  };
+// export const deletePost =
+//   ({ id, search }) =>
+//   async (dispatch) => {
+//     await request.delete(`category/${id}`);
+//     dispatch(getCategories(1, search));
+//     dispatch(getCategories({ activePage: 1 }));
+//   };

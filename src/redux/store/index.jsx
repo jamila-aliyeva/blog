@@ -3,11 +3,11 @@ import categoriesReducer from "../reducer/categories";
 import thunk from "redux-thunk";
 import PropTypes from "prop-types";
 import { Provider } from "react-redux";
-import postsReducer from "../reducer/posts";
+// import postsReducer from "../reducer/posts";
 
 const rootReducer = combineReducers({
   categories: categoriesReducer,
-  posts: postsReducer,
+  // posts: postsReducer,
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));
